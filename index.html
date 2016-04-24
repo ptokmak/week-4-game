@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Star Wars: The Game</title>
+	<script src="https://code.jquery.com/jquery.js"></script>
+</head>
+	<style>
+		body { background: url(assets/images/img01.jpg) no-repeat;  background-size: 100%; font-family: Courier, Franklin Gothic, serif;}
+		.top_level img{margin-top: 10px; padding: 5px;}
+		.mid_level img{margin-top: 10px; padding: 5px;}
+		.bottom_level img{margin-top: 10px; padding: 5px;}
+		h2 {color: white;  font-size: 20px; font-weight:normal;}
+		p {color: white;  font-size: 16px; font-weight:normal;}
+
+/*		.letter { width: 30px; height:30px; border-style: solid; padding: 2px; float: left; margin: 2px; }
+
+		.letter-button-color { color: darkcyan; }
+
+		.fridge-color { color: orange; }
+
+		#display { margin-top:78px; height:500px; width:220px; margin-left:60px; }
+
+		#buttons { padding-top:60px; }
+
+		#clear { margin-left: 20px; font-size: 25px; color: black; border-style: solid; width: 100px; } */
+	</style>
+
+
+<body>
+	<h2>Your Character</h2>
+		<div class="top_level">
+			<img  id="warrior1" src=assets/images/170-150.jpg>
+			<img  id="warrior2" src=assets/images/170-150.jpg>
+			<img  id="warrior3" src=assets/images/170-150.jpg>
+			<img  id="warrior3" src=assets/images/170-150.jpg>
+		</div>
+
+	<h2>Enemies Available to Attack</h2>
+		<div class="mid_level">
+			<img  id="warrior2" src=assets/images/170-150.jpg>
+			<img  id="warrior3" src=assets/images/170-150.jpg>
+			<img  id="warrior3" src=assets/images/170-150.jpg>
+		</div>
+
+	<h2>Fight Section</h2>
+		<button id='attacker'>Attack</button>
+	<h2>Defender</h2>
+		<div class="bottom_level">
+			<img  id="warrior3" src=assets/images/170-150.jpg>
+		</div>
+
+
+	<p>Text results display here</p>
+
+
+</body>
+</html>

@@ -11,7 +11,7 @@
 
 </head>
 	<style>
-		body { background: url(assets/images/img01.jpg) no-repeat;  background-size: 100%;  font-family: Courier, Franklin Gothic, serif;}
+		body { background: url(assets/images/img01.jpg) no-repeat;  background-size:100%;  font-family: Courier, Franklin Gothic, serif;}
 		.top_level img{margin-top: 10px; padding: 5px;}
 		.mid_level img{margin-top: 10px; padding: 5px;}
 		.bottom_level img{margin-top: 10px; padding: 5px;}
@@ -26,8 +26,7 @@
 <body>
 	<h2>Your Character</h2>
 		<div id="top_level">
-			<button class="warrior" id="warrior1" value="_character1"
-			data-healthPoint=110 data-attackPoint=15 data-counterAttack=20><img src=assets/images/170-150.jpg>Darth</button>
+			<button class="warrior" id="warrior1" data-healthPoint=110 data-attackPoint=15 data-counterAttack=20><img src=assets/images/170-150.jpg>Darth</button>
 			<button class="warrior" id="warrior2" data-healthPoint=110 data-attackPoint=15 data-counterAttack=20><img src=assets/images/170-150.jpg>Pinar</button>
 			<button class="warrior" id="warrior3" data-healthPoint=110 data-attackPoint=15 data-counterAttack=20><img src=assets/images/170-150.jpg>Jorge</button>
 			<button class="warrior" id="warrior4" data-healthPoint=110 data-attackPoint=15 data-counterAttack=20><img src=assets/images/170-150.jpg>Anjelik</button>
@@ -57,13 +56,14 @@
 	var _warriorClicked = "";
 	var _enemyClicked = "";
 	var _defenderClicked = "";
-		var _character1 = {healthPoint:110, attackPoint:15, counterAttack:20};
+	var _otherWarriors = [];
+	var _character1 = {healthPoint:110, attackPoint:15, counterAttack:20};
 	var _character2 = {healthPoint:130, attackPoint:15, counterAttack:20};
 	var _character3 = {healthPoint:120, attackPoint:15, counterAttack:20};
 	var _character4 = {healthPoint:100, attackPoint:15, counterAttack:20};
 	console.log(_character1.healthPoint);
 	console.log(_character2.healthPoint);
-	
+	// alert($("#warrior1").attr("data-healthPoint"));
 
 	$(document).ready(function(){
 		$('button').click(function(){
@@ -108,12 +108,11 @@
 			}	
 			//Adding Attack Button Properties
 			if ($(this).hasClass("btnAttack")){
-
+				console.log($('.defender').attr('data-healthPoint'))
+				console.log($('.warrior').attr('data-healthPoint'))
 				if (_enemyClicked){
-					if($(this).hasClass("warrior")){
-						var a = $("#"+this.id).attr("data-healthPoint");
-					alert("#"+this.id);
-					}
+
+				
 
 
 

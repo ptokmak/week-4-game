@@ -26,9 +26,9 @@
 <body>
 	<h2>Your Character</h2>
 		<div id="top_level">
-			<button class="warrior" value="Darth" id="warrior1" data-healthPoint=100 data-attackPoint=8 data-counterAttack=50 data-image="darth01"><img src=assets/images/darth01.jpg><span>Darth HP:130 Attk: 8 CntAttk: 10</span></button>
-			<button class="warrior" value="Luke" id="warrior2" data-healthPoint=150 data-attackPoint=6 data-counterAttack=9 data-image="luke01"><img src=assets/images/luke01.jpg><span>Luke HP:150 Attk: 6 CntAttk: 9</span></button>
-			<button class="warrior" value="Leia" id="warrior3" data-healthPoint=180 data-attackPoint=5 data-counterAttack=8 data-image="leia01"><img src=assets/images/leia01.jpg><span>Leia HP:80 Attk: 5 CntAttk: 8</span></button>
+			<button class="warrior" value="Darth" id="warrior1" data-healthPoint=100 data-attackPoint=8 data-counterAttack=20 data-image="darth01"><img src=assets/images/darth01.jpg><span>Darth HP:100 Attk: 8 CntAttk: 20</span></button>
+			<button class="warrior" value="Luke" id="warrior2" data-healthPoint=140 data-attackPoint=6 data-counterAttack=9 data-image="luke01"><img src=assets/images/luke01.jpg><span>Luke HP:140 Attk: 6 CntAttk: 9</span></button>
+			<button class="warrior" value="Leia" id="warrior3" data-healthPoint=150 data-attackPoint=9 data-counterAttack=15 data-image="leia01"><img src=assets/images/leia01.jpg><span>Leia HP:150 Attk: 9 CntAttk: 15</span></button>
 			<button class="warrior" value="Obi" id="warrior4" data-healthPoint=120 data-attackPoint=7 data-counterAttack=11 data-image="obi01"><img src=assets/images/obi01.jpg><span>Obi HP:120 Attk: 7 CntAttk: 11</span></button>
 		</div>
 
@@ -51,7 +51,6 @@
 
 	var _warriorClicked = "";
 	var _defenderClicked = "";
-	var _otherWarriors = [];
 	var _attakCount=0;
 	var _hasDefender=false;
 	var _countDefender=0;
@@ -68,8 +67,6 @@
 				{
 					if (this.id != _warriorClicked)
 					{
-						// alert(this.id); // "this" is the current element in the loop
-						_otherWarriors.push(this.id);
 						//moving other warriors to enemies line
 						$(this).appendTo( $('#mid_level'));
 						$(this).removeClass("warrior");
@@ -102,10 +99,10 @@
 			}
 			if ($(this).hasClass("restart"))
 			{
-				$('#top_level').html('<button class="warrior" value="Darth" id="warrior1" data-healthPoint=100 data-attackPoint=8 data-counterAttack=50 data-image="darth01"><img src=assets/images/darth01.jpg><span>Darth HP:130 Attk: 8 CntAttk: 10</span></button>'+
-					'<button class="warrior" value="Luke" id="warrior2" data-healthPoint=150 data-attackPoint=6 data-counterAttack=9 data-image="luke01"><img src=assets/images/luke01.jpg><span>Luke HP:150 Attk: 6 CntAttk: 9</span></button>'+
-					'<button class="warrior" value="Leia" id="warrior3" data-healthPoint=180 data-attackPoint=5 data-counterAttack=8 data-image="leia01"><img src=assets/images/leia01.jpg><span>Leia HP:80 Attk: 5 CntAttk: 8</span></button>'+
-					'<button class="warrior" value="Obi" id="warrior4" data-healthPoint=120 data-attackPoint=7 data-counterAttack=11 data-image="obi01"><img src=assets/images/obi01.jpg><span>Obi HP:120 Attk: 7 CntAttk: 11</span></button>')
+				$('#top_level').html('<button class="warrior" value="Darth" id="warrior1" data-healthPoint=100 data-attackPoint=8 data-counterAttack=20 data-image="darth01"><img src=assets/images/darth01.jpg><span>Darth HP:100 Attk: 8 CntAttk: 20</span></button>'+
+					'<button class="warrior" value="Luke" id="warrior2" data-healthPoint=140 data-attackPoint=6 data-counterAttack=9 data-image="luke01"><img src=assets/images/luke01.jpg><span>Luke HP:140 Attk: 6 CntAttk: 9</span></button>'+
+					'<button class="warrior" value="Leia" id="warrior3" data-healthPoint=150 data-attackPoint=9 data-counterAttack=15 data-image="leia01"><img src=assets/images/leia01.jpg><span>Leia HP:150 Attk: 9 CntAttk: 15</span></button>'+
+					'<button class="warrior" value="Obi" id="warrior4" data-healthPoint=120 data-attackPoint=7 data-counterAttack=11 data-image="obi01"><img src=assets/images/obi01.jpg><span>Obi HP:120 Attk: 7 CntAttk: 11</span></button>');
 
 				$('#mid_level').children('button').each(function() 
 				{
@@ -121,6 +118,14 @@
 						$(this).remove();
 					}
 				});
+				_warriorClicked = "";
+				_defenderClicked = "";
+				_attakCount=0;
+				_hasDefender=false;
+				_countDefender=0;
+				_countEnemy=0;
+				$('#result_text').html('<p></p>')
+				location.reload();
 			}
 			//Adding Attack Button Properties
 			if ($(this).hasClass("btnAttack"))

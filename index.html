@@ -26,17 +26,14 @@
 <body>
 	<h2>Your Character</h2>
 		<div id="top_level">
-			<button class="warrior" id="warrior1" data-healthPoint=110 data-attackPoint=15 data-counterAttack=20><img src=assets/images/170-150.jpg>Darth</button>
-			<button class="warrior" id="warrior2" data-healthPoint=110 data-attackPoint=15 data-counterAttack=20><img src=assets/images/170-150.jpg>Pinar</button>
-			<button class="warrior" id="warrior3" data-healthPoint=110 data-attackPoint=15 data-counterAttack=20><img src=assets/images/170-150.jpg>Jorge</button>
-			<button class="warrior" id="warrior4" data-healthPoint=110 data-attackPoint=15 data-counterAttack=20><img src=assets/images/170-150.jpg>Anjelik</button>
-		
-
+			<button class="warrior" value="Darth" id="warrior1" data-healthPoint=100 data-attackPoint=8 data-counterAttack=50><img src=assets/images/170-150.jpg><span>Darth HP:130 Attk: 8 CntAttk: 10</span></button>
+			<button class="warrior" value="Pinar" id="warrior2" data-healthPoint=150 data-attackPoint=6 data-counterAttack=9><img src=assets/images/170-150.jpg><span>Pinar HP:150 Attk: 6 CntAttk: 9</span></button>
+			<button class="warrior" value="Jorge" id="warrior3" data-healthPoint=180 data-attackPoint=5 data-counterAttack=8><img src=assets/images/170-150.jpg><span>Jorge HP:80 Attk: 5 CntAttk: 8</span></button>
+			<button class="warrior" value="Anjelik" id="warrior4" data-healthPoint=120 data-attackPoint=7 data-counterAttack=11><img src=assets/images/170-150.jpg><span>Anjelik HP:120 Attk: 7 CntAttk: 11</span></button>
 		</div>
 
 	<h2>Enemies Available to Attack</h2>
 		<div id="mid_level">
-
 		</div>
 
 	<h2>Fight Section</h2>
@@ -46,29 +43,25 @@
 			<!-- <img  id="warrior3" src=assets/images/170-150.jpg> -->
 		</div>
 
-
 	<div id="result_text"><p>Text results display here</p></div>
 
-	<div id="btn2"><button id='restart'>Restart</button></div>
+	<div id="btn2"><button id='restart' class="restart">Restart</button></div>
 
 	<script type="text/javascript">
 
 	var _warriorClicked = "";
-	var _enemyClicked = "";
 	var _defenderClicked = "";
 	var _otherWarriors = [];
-	var _character1 = {healthPoint:110, attackPoint:15, counterAttack:20};
-	var _character2 = {healthPoint:130, attackPoint:15, counterAttack:20};
-	var _character3 = {healthPoint:120, attackPoint:15, counterAttack:20};
-	var _character4 = {healthPoint:100, attackPoint:15, counterAttack:20};
-	console.log(_character1.healthPoint);
-	console.log(_character2.healthPoint);
-	// alert($("#warrior1").attr("data-healthPoint"));
-
+	var _attakCount=0;
+	var _hasDefender=false;
+	var _countDefender=0;
+	var _countEnemy=0;
+	
 	$(document).ready(function(){
 		$('button').click(function(){
 			if( $(this).hasClass("warrior") )
 			{
+				//warrior id
 				_warriorClicked=this.id;
 				//loops all the buttons inside of the div
 				$('#top_level').children('button').each(function() 
@@ -86,49 +79,122 @@
 			}
 			if( $(this).hasClass("enemy"))
 			{
-				_enemyClicked=this.id;
-				$("#mid_level").children('button').each(function()
+				_countDefender=0;
+				$('#bottom_level').children('button').each(function() 
 				{
-					if (this.id != _enemyClicked)
+					if( $(this).hasClass("defender") )
 					{
-						// alert(this.id);
-						//moving the selected enemy to bottom-level(defender area)
-						$(this).appendTo($("#mid_level"));
-						$(this).removeClass("enemy");
-						$(this).addClass("defender");
-					}else
-					{
-						// alert(this.id);
-						//moving the selected enemy to bottom-level(defender area)
-						$(this).appendTo($("#bottom_level"));
-						$(this).removeClass("enemy");
-						$(this).addClass("defender");
+						_countDefender++;
 					}
 				});
-			}	
-			//Adding Attack Button Properties
-			if ($(this).hasClass("btnAttack")){
-				console.log($('.defender').attr('data-healthPoint'))
-				console.log($('.warrior').attr('data-healthPoint'))
-				if (_enemyClicked){
-
-				
-
-
-
-
-
-				}else{
-					alert ("Not Ready to Attack Yet!!! Select Warriors!");
+				if(_countDefender!=0)
+				{
+					$('#result_text').html('<p>You still have a defender.</p>')
 				}
+				else
+				{
+					//defender id
+					_defenderClicked=this.id;
+					$(this).appendTo($("#bottom_level"));
+					$(this).removeClass("enemy");
+					$(this).addClass("defender");
+				}
+			}
+			if ($(this).hasClass("restart"))
+			{
+				$('#top_level').html('<button class="warrior" value="Darth" id="warrior1" data-healthPoint=100 data-attackPoint=8 data-counterAttack=10><img src=assets/images/170-150.jpg><span>Darth HP:130 Attk: 8 CntAttk: 10</span></button>'+
+					'<button class="warrior" value="Pinar" id="warrior2" data-healthPoint=150 data-attackPoint=6 data-counterAttack=9><img src=assets/images/170-150.jpg><span>Pinar HP:150 Attk: 6 CntAttk: 9</span></button>'+
+					'<button class="warrior" value="Jorge" id="warrior3" data-healthPoint=180 data-attackPoint=5 data-counterAttack=8><img src=assets/images/170-150.jpg><span>Jorge HP:80 Attk: 5 CntAttk: 8</span></button>'+
+					'<button class="warrior" value="Anjelik" id="warrior4" data-healthPoint=120 data-attackPoint=7 data-counterAttack=11><img src=assets/images/170-150.jpg><span>Anjelik HP:120 Attk: 7 CntAttk: 11</span></button>')
 
+				$('#mid_level').children('button').each(function() 
+				{
+					if( $(this).hasClass("enemy") )
+					{
+						$(this).remove();
+					}
+				});
+				$('#bottom_level').children('button').each(function() 
+				{
+					if( $(this).hasClass("defender") )
+					{
+						$(this).remove();
+					}
+				});
+			}
+			//Adding Attack Button Properties
+			if ($(this).hasClass("btnAttack"))
+			{
+				// console.log($('.defender').attr('data-healthPoint'))
+				// console.log($('.warrior').attr('data-healthPoint'))
+				_countDefender=0;
+				_countEnemy=0;
+				$('#bottom_level').children('button').each(function() 
+				{
+					if( $(this).hasClass("defender") )
+					{
+						_countDefender++;
+					}
+				});
+				if( _countDefender !=0 )
+				{
+					_hasDefender=true;
+					$('#result_text').html('<p></p>')
+				}
+				else
+				{
+					_hasDefender=false;
+					$('#result_text').html('<p>Please select a defender</p>')
+				}
+				//When defender exist
+				if(_hasDefender)
+				{
 
-				// for (var i=0; i<0; i++){}
+						_attakCount++;
+						var _defenderHP = $('#'+_defenderClicked).attr("data-healthPoint");
+						var _defenderCounterAttack =$('#'+_defenderClicked).attr("data-counterAttack");
+						_defenderHP=_defenderHP-(_warriorAttack*_attakCount);
+						_warriorHP=_warriorHP-(_defenderCounterAttack);
+						//update Health point for warrior and current defender
+						$('#'+_warriorClicked).attr("data-healthPoint",_warriorHP);
+						$('#'+_defenderClicked).attr("data-healthPoint",_defenderHP);
+						//showing warrior's health, attack and counter attack values
+						$('#'+_warriorClicked).html("<img src=assets/images/170-150.jpg><span>"+$('#'+_warriorClicked).attr("value")+
+							" HP:"+$('#'+_warriorClicked).attr("data-healthPoint")+
+							" Attk:"+_warriorAttack*_attakCount+
+							" CntAttk:"+$('#'+_warriorClicked).attr("data-counterAttack")+"</span>");
+
+						{
+							$('#'+_defenderClicked).remove();
+							$('#result_text').html('<p>Your warrior has defeated the defender.</p>')
+						}
+						else
+						{
+							$('#result_text').html('<p></p>')
+						}
+					}
+					else
+					{
+						$('#result_text').html('<p>Your warrior has been defeated.</p>')
+					}
+				}
+				else
+				{
+					$('#mid_level').children('button').each(function() 
+					{
+						if( $(this).hasClass("enemy") )
+						{
+							_countEnemy++;
+						}
+					});
+					if(_countEnemy==0)
+					{
+						$('#result_text').html('<p>Your warrior has defeated all enemies. You won!</p>')
+					}
+				}
 			}			
-		})
-	})
-
-
+		});
+	});
 	</script>
 
 </body>

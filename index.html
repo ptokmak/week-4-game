@@ -26,10 +26,10 @@
 <body>
 	<h2>Your Character</h2>
 		<div id="top_level">
-			<button class="warrior" value="Darth" id="warrior1" data-healthPoint=100 data-attackPoint=8 data-counterAttack=50><img src=assets/images/darth01.jpg><span>Darth HP:130 Attk: 8 CntAttk: 10</span></button>
-			<button class="warrior" value="Pinar" id="warrior2" data-healthPoint=150 data-attackPoint=6 data-counterAttack=9><img src=assets/images/luke01.jpg><span>Pinar HP:150 Attk: 6 CntAttk: 9</span></button>
-			<button class="warrior" value="Jorge" id="warrior3" data-healthPoint=180 data-attackPoint=5 data-counterAttack=8><img src=assets/images/leia01.jpg><span>Jorge HP:80 Attk: 5 CntAttk: 8</span></button>
-			<button class="warrior" value="Anjelik" id="warrior4" data-healthPoint=120 data-attackPoint=7 data-counterAttack=11><img src=assets/images/obi01.jpg><span>Anjelik HP:120 Attk: 7 CntAttk: 11</span></button>
+			<button class="warrior" value="Darth" id="warrior1" data-healthPoint=100 data-attackPoint=8 data-counterAttack=50 data-image="darth01"><img src=assets/images/darth01.jpg><span>Darth HP:130 Attk: 8 CntAttk: 10</span></button>
+			<button class="warrior" value="Luke" id="warrior2" data-healthPoint=150 data-attackPoint=6 data-counterAttack=9 data-image="luke01"><img src=assets/images/luke01.jpg><span>Luke HP:150 Attk: 6 CntAttk: 9</span></button>
+			<button class="warrior" value="Leia" id="warrior3" data-healthPoint=180 data-attackPoint=5 data-counterAttack=8 data-image="leia01"><img src=assets/images/leia01.jpg><span>Leia HP:80 Attk: 5 CntAttk: 8</span></button>
+			<button class="warrior" value="Obi" id="warrior4" data-healthPoint=120 data-attackPoint=7 data-counterAttack=11 data-image="obi01"><img src=assets/images/obi01.jpg><span>Obi HP:120 Attk: 7 CntAttk: 11</span></button>
 		</div>
 
 	<h2>Enemies Available to Attack</h2>
@@ -102,10 +102,10 @@
 			}
 			if ($(this).hasClass("restart"))
 			{
-				$('#top_level').html('<button class="warrior" value="Darth" id="warrior1" data-healthPoint=100 data-attackPoint=8 data-counterAttack=10><img src=assets/images/darth01.jpg><span>Darth HP:130 Attk: 8 CntAttk: 10</span></button>'+
-					'<button class="warrior" value="Pinar" id="warrior2" data-healthPoint=150 data-attackPoint=6 data-counterAttack=9><img src=assets/images/luke01.jpg><span>Pinar HP:150 Attk: 6 CntAttk: 9</span></button>'+
-					'<button class="warrior" value="Jorge" id="warrior3" data-healthPoint=180 data-attackPoint=5 data-counterAttack=8><img src=assets/images/leia01.jpg><span>Jorge HP:80 Attk: 5 CntAttk: 8</span></button>'+
-					'<button class="warrior" value="Anjelik" id="warrior4" data-healthPoint=120 data-attackPoint=7 data-counterAttack=11><img src=assets/images/obi01.jpg><span>Anjelik HP:120 Attk: 7 CntAttk: 11</span></button>')
+				$('#top_level').html('<button class="warrior" value="Darth" id="warrior1" data-healthPoint=100 data-attackPoint=8 data-counterAttack=50 data-image="darth01"><img src=assets/images/darth01.jpg><span>Darth HP:130 Attk: 8 CntAttk: 10</span></button>'+
+					'<button class="warrior" value="Luke" id="warrior2" data-healthPoint=150 data-attackPoint=6 data-counterAttack=9 data-image="luke01"><img src=assets/images/luke01.jpg><span>Luke HP:150 Attk: 6 CntAttk: 9</span></button>'+
+					'<button class="warrior" value="Leia" id="warrior3" data-healthPoint=180 data-attackPoint=5 data-counterAttack=8 data-image="leia01"><img src=assets/images/leia01.jpg><span>Leia HP:80 Attk: 5 CntAttk: 8</span></button>'+
+					'<button class="warrior" value="Obi" id="warrior4" data-healthPoint=120 data-attackPoint=7 data-counterAttack=11 data-image="obi01"><img src=assets/images/obi01.jpg><span>Obi HP:120 Attk: 7 CntAttk: 11</span></button>')
 
 				$('#mid_level').children('button').each(function() 
 				{
@@ -162,12 +162,12 @@
 						$('#'+_warriorClicked).attr("data-healthPoint",_warriorHP);
 						$('#'+_defenderClicked).attr("data-healthPoint",_defenderHP);
 						//showing warrior's health, attack and counter attack values
-						$('#'+_warriorClicked).html("<img src=assets/images/170-150.jpg><span>"+$('#'+_warriorClicked).attr("value")+
+						$('#'+_warriorClicked).html("<img src=assets/images/"+$('#'+_warriorClicked).attr("data-image")+".jpg><span>"+$('#'+_warriorClicked).attr("value")+
 							" HP:"+$('#'+_warriorClicked).attr("data-healthPoint")+
 							" Attk:"+_warriorAttack*_attakCount+
 							" CntAttk:"+$('#'+_warriorClicked).attr("data-counterAttack")+"</span>");
 						//showing defender's health, attack and counter attack values
-						$('#'+_defenderClicked).html("<img src=assets/images/170-150.jpg><span>"+$('#'+_defenderClicked).attr("value")+
+						$('#'+_defenderClicked).html("<img src=assets/images/"+$('#'+_defenderClicked).attr("data-image")+".jpg><span>"+$('#'+_defenderClicked).attr("value")+
 							" HP:"+$('#'+_defenderClicked).attr("data-healthPoint")+
 							" Attk:"+$('#'+_defenderClicked).attr("data-attackPoint")+
 							" CntAttk:"+_defenderCounterAttack+"</span>");

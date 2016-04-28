@@ -11,7 +11,7 @@
 
 </head>
 	<style>
-		body { background: url(assets/images/img02.jpg) no-repeat;  background-size: 100%;  font-family: Courier, Franklin Gothic, serif;}
+		body { background: url(assets/images/img01.jpg) no-repeat;  background-size: 100%;  font-family: Courier, Franklin Gothic, serif;}
 		.top_level img{margin-top: 10px; padding: 5px;}
 		.mid_level img{margin-top: 10px; padding: 5px;}
 		.bottom_level img{margin-top: 10px; padding: 5px;}
@@ -26,10 +26,11 @@
 <body>
 	<h2>Your Character</h2>
 		<div id="top_level">
-			<button class="warrior" id="warrior1"><img src=assets/images/170-150.jpg value="warrior1">Darth</button>
-			<button class="warrior" id="warrior2"><img src=assets/images/170-150.jpg value="warrior2">Pinar</button>
-			<button class="warrior" id="warrior3"><img src=assets/images/170-150.jpg value="warrior3">Jorge</button>
-			<button class="warrior" id="warrior4"><img src=assets/images/170-150.jpg value="warrior4">Anjelik</button>
+			<button class="warrior" id="warrior1" value="_character1"
+			data-healthPoint=110 data-attackPoint=15 data-counterAttack=20><img src=assets/images/170-150.jpg>Darth</button>
+			<button class="warrior" id="warrior2" data-healthPoint=110 data-attackPoint=15 data-counterAttack=20><img src=assets/images/170-150.jpg>Pinar</button>
+			<button class="warrior" id="warrior3" data-healthPoint=110 data-attackPoint=15 data-counterAttack=20><img src=assets/images/170-150.jpg>Jorge</button>
+			<button class="warrior" id="warrior4" data-healthPoint=110 data-attackPoint=15 data-counterAttack=20><img src=assets/images/170-150.jpg>Anjelik</button>
 		
 
 		</div>
@@ -40,7 +41,7 @@
 		</div>
 
 	<h2>Fight Section</h2>
-		<div id=btn1><button id='attacker'>Attack</button></div>
+		<div id=btn1><button class= "btnAttack" id='attacker'>Attack</button></div>
 	<h2>Defender</h2>
 		<div id="bottom_level">
 			<!-- <img  id="warrior3" src=assets/images/170-150.jpg> -->
@@ -55,7 +56,15 @@
 
 	var _warriorClicked = "";
 	var _enemyClicked = "";
-	var _otherWarriors = [];
+	var _defenderClicked = "";
+		var _character1 = {healthPoint:110, attackPoint:15, counterAttack:20};
+	var _character2 = {healthPoint:130, attackPoint:15, counterAttack:20};
+	var _character3 = {healthPoint:120, attackPoint:15, counterAttack:20};
+	var _character4 = {healthPoint:100, attackPoint:15, counterAttack:20};
+	console.log(_character1.healthPoint);
+	console.log(_character2.healthPoint);
+	
+
 	$(document).ready(function(){
 		$('button').click(function(){
 			if( $(this).hasClass("warrior") )
@@ -96,13 +105,28 @@
 						$(this).addClass("defender");
 					}
 				});
-			}
+			}	
+			//Adding Attack Button Properties
+			if ($(this).hasClass("btnAttack")){
+
+				if (_enemyClicked){
+					if($(this).hasClass("warrior")){
+						var a = $("#"+this.id).attr("data-healthPoint");
+					alert("#"+this.id);
+					}
+
+
+
+
+
+				}else{
+					alert ("Not Ready to Attack Yet!!! Select Warriors!");
+				}
+
+
+				// for (var i=0; i<0; i++){}
+			}			
 		})
-
-
-
-
-
 	})
 
 

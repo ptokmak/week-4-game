@@ -149,7 +149,10 @@
 				//When defender exist
 				if(_hasDefender)
 				{
-
+					var _warriorHP=$('#'+_warriorClicked).attr("data-healthPoint");
+					var _warriorAttack=$('#'+_warriorClicked).attr("data-attackPoint");
+					if(_warriorHP>0)
+					{
 						_attakCount++;
 						var _defenderHP = $('#'+_defenderClicked).attr("data-healthPoint");
 						var _defenderCounterAttack =$('#'+_defenderClicked).attr("data-counterAttack");
@@ -163,7 +166,12 @@
 							" HP:"+$('#'+_warriorClicked).attr("data-healthPoint")+
 							" Attk:"+_warriorAttack*_attakCount+
 							" CntAttk:"+$('#'+_warriorClicked).attr("data-counterAttack")+"</span>");
-
+						//showing defender's health, attack and counter attack values
+						$('#'+_defenderClicked).html("<img src=assets/images/170-150.jpg><span>"+$('#'+_defenderClicked).attr("value")+
+							" HP:"+$('#'+_defenderClicked).attr("data-healthPoint")+
+							" Attk:"+$('#'+_defenderClicked).attr("data-attackPoint")+
+							" CntAttk:"+_defenderCounterAttack+"</span>");
+						if(_defenderHP<=0)
 						{
 							$('#'+_defenderClicked).remove();
 							$('#result_text').html('<p>Your warrior has defeated the defender.</p>')

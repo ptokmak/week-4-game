@@ -1,0 +1,38 @@
+		body { 
+			background: url(../../assets/images/img01.jpg) no-repeat;  
+			background-size:100%;  
+			font-family: Courier, Franklin Gothic, serif;
+		}
+		.top_level img{
+			margin-top: 10px; 
+			padding: 5px;
+		}
+		.mid_level img{
+			margin-top: 10px; 
+			padding: 5px;
+		}
+		.bottom_level img{
+			margin-top: 10px; 
+			padding: 5px;
+		}
+		h2 {
+			color: white;  
+			font-size: 20px; 
+			font-weight:normal;
+			margin-top: 20px;
+			margin-bottom: 10px;
+		}
+		p {
+			color: white;  
+			font-size: 16px; 
+			font-weight:normal; 
+			padding: 10px;
+		}
+		button { 
+			height: 10%; 
+			width: 10%; 
+		}
+		button img {
+			height: 100%; 
+			width: 100%; 
+		}

@@ -173,7 +173,8 @@
 					{
 						$('#result_text').html('<p>Select your next defender.</p>')
 					}
-				}
+
+				}if (_warriorHP<=0){$('#result_text').html('<p> You lost. Game Over!</p>')}
 			}			
 		});
 	});

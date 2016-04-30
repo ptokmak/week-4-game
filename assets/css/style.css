@@ -1,6 +1,7 @@
 		body { 
-			background: url(../../assets/images/img01.jpg) no-repeat;  
-			background-size:100%;  
+			background: url(../../assets/images/image02.jpg) no-repeat;  
+			background-size: 100%;
+			background-color: black;
 			font-family: Courier, Franklin Gothic, serif;
 		}
 		.top_level img{
@@ -23,16 +24,41 @@
 			margin-bottom: 10px;
 		}
 		p {
-			color: white;  
+			color: red;  
 			font-size: 16px; 
 			font-weight:normal; 
 			padding: 10px;
-		}
+		}			
 		button { 
 			height: 10%; 
-			width: 10%; 
+			width: 10%; 			
+		}
+		.warrior {
+			border:1px solid blue; 
+			background-color:white;  
+		}
+		.enemy {
+			border:1px solid blue; 
+			background-color:red;  
+		}
+		.defender {
+			border:1px solid green; 
+			background-color:white;  
 		}
 		button img {
 			height: 100%; 
 			width: 100%; 
+		}
+		button img:hover{
+			/*transform:scale(1.03);*/
+       -webkit-transition: all 0.5s ease;
+       -moz-transition: all 0.5s ease;
+       -o-transition: all 0.5s ease;
+       -ms-transition: all 0.5s ease;
+       transition: all 0.5s ease;
+		  -webkit-transform: rotate(-5deg);
+          -moz-transform: rotate(-5deg);
+          -o-transform: rotate(-5deg);
+          -ms-transform: rotate(-5deg);
+          transform: rotate(-5deg);
 		}
